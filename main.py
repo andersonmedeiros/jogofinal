@@ -10,16 +10,19 @@ mode = (width, height)
 white = (255,255,255)
 black = (0,0,0)
 red = (255,0,0)
-# Coordenadas do primeiro player
+green = (0,255,0)
+blue = (0,0,255)
+# Retângulos
 
-pos_x1 = 530
-pos_y1 = 530
-shape = pygame.Rect(pos_x1,pos_y1,30,50)
-# Coordenadas do segundo player
+player = pygame.Rect(530,530,30,50)
+player_2 = pygame.Rect(70,530,30,50)
+ground = pygame.Rect(0,580,600,25)
+cent_plat = pygame.Rect(125,400,350,35)
+cent_upper_plat = pygame.Rect(125,100,350,35)
+left_plat = pygame.Rect(0,250,100,35)
+right_plat = pygame.Rect(500,250,100,35)
 
-pos_x2 = 70
-pos_y2 = 530
-shape_2 = pygame.Rect(pos_x2,pos_y2,30,50)
+# Auxílios
 clock = pygame.time.Clock()
 close = True
 
@@ -33,26 +36,30 @@ while close:
             close = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                pos_x1-= 10
+                player.move_ip(-10,0)
             if event.key == pygame.K_RIGHT:
-                pos_x1+= 10
+                player.move_ip(10,0)
             if event.key == pygame.K_UP:
-                pos_y1-= 10
+                player.move_ip(0,-10)
             if event.key == pygame.K_DOWN:
-                pos_y1+= 10
+                player.move_ip(0,10)
             # MOVIMENTO DO SEGUNDO PLAYER
             if event.key == pygame.K_a:
-                pos_x2-= 10
+                player_2.move_ip(-10,0)
             if event.key == pygame.K_d:
-                pos_x2+= 10
+                player_2.move_ip(10,0)
             if event.key == pygame.K_w:
-                pos_y2-= 10
+                player_2.move_ip(0,-10)
             if event.key == pygame.K_s:
-                pos_y2+= 10
-    tela.fill(red)
-    pygame.draw.rect(tela, black, shape_2)
-    pygame.draw.rect(tela, white, shape)
-
+                player_2.move_ip(0,10)
+    tela.fill(green)
+    pygame.draw.rect(tela, blue, player_2)
+    pygame.draw.rect(tela, red, player)
+    pygame.draw.rect(tela, white, ground)
+    pygame.draw.rect(tela, white, cent_plat)
+    pygame.draw.rect(tela, white, cent_upper_plat)
+    pygame.draw.rect(tela, white, left_plat)
+    pygame.draw.rect(tela, white, right_plat)
     clock.tick(27)
     pygame.display.update()
 pygame.quit()
