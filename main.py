@@ -1,4 +1,5 @@
 import pygame
+from menu import menu
 
 pygame.init()
 
@@ -7,20 +8,20 @@ height = 600
 mode = (width, height)
 # Cores
 
-white = (255,255,255)
-black = (0,0,0)
-red = (255,0,0)
-green = (0,255,0)
-blue = (0,0,255)
+white = (255, 255, 255)
+black = (0, 0, 0)
+red = (255, 0, 0)
+green = (0, 255, 0)
+blue = (0, 0, 255)
 # Retângulos
 
-player = pygame.Rect(530,530,30,50)
-player_2 = pygame.Rect(70,530,30,50)
-ground = pygame.Rect(0,580,600,25)
-cent_plat = pygame.Rect(125,400,350,35)
-cent_upper_plat = pygame.Rect(125,100,350,35)
-left_plat = pygame.Rect(0,250,100,35)
-right_plat = pygame.Rect(500,250,100,35)
+player = pygame.Rect(530, 530, 30, 50)
+player_2 = pygame.Rect(70, 530, 30, 50)
+ground = pygame.Rect(0, 580, 600, 25)
+cent_plat = pygame.Rect(125, 400, 350, 35)
+cent_upper_plat = pygame.Rect(125, 100, 350, 35)
+left_plat = pygame.Rect(0, 250, 100, 35)
+right_plat = pygame.Rect(500, 250, 100, 35)
 
 # Auxílios
 clock = pygame.time.Clock()
@@ -31,27 +32,28 @@ pygame.display.set_caption("Jogo Final")
 
 
 while close:
+    menu(screen)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             close = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                player.move_ip(-10,0)
+                player.move_ip(-10, 0)
             if event.key == pygame.K_RIGHT:
-                player.move_ip(10,0)
+                player.move_ip(10, 0)
             if event.key == pygame.K_UP:
-                player.move_ip(0,-10)
+                player.move_ip(0, -10)
             if event.key == pygame.K_DOWN:
-                player.move_ip(0,10)
+                player.move_ip(0, 10)
             # MOVIMENTO DO SEGUNDO PLAYER
             if event.key == pygame.K_a:
-                player_2.move_ip(-10,0)
+                player_2.move_ip(-10, 0)
             if event.key == pygame.K_d:
-                player_2.move_ip(10,0)
+                player_2.move_ip(10, 0)
             if event.key == pygame.K_w:
-                player_2.move_ip(0,-10)
+                player_2.move_ip(0, -10)
             if event.key == pygame.K_s:
-                player_2.move_ip(0,10)
+                player_2.move_ip(0, 10)
     tela.fill(green)
     pygame.draw.rect(tela, blue, player_2)
     pygame.draw.rect(tela, red, player)
