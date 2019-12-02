@@ -1,5 +1,6 @@
 import pygame
-from menu import menu
+from menu import show_menu
+from credits import show_credits
 
 pygame.init()
 
@@ -19,12 +20,12 @@ pygame.display.set_caption("Jogo Final")
 
 close = True
 while close:
-    op = menu(screen, width, height)
+    op = show_menu(screen, width, height)
     if op == False:
         close = False
     elif op == 1:
         print("PLAY")
     elif op == 2:
-        print("CREDITS")
+        show_credits(screen, width, height)
 
 pygame.quit()
