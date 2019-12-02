@@ -8,24 +8,11 @@ def text(msg, cor):
     return text
 
 
-
 def show_credits(screen, width, height):
     txt_credits = open("credits.txt", "r")
     list_credits = []
     for credit in txt_credits:
         list_credits.append(credit.strip("\n"))
-
-    # centro da tela
-    center_x = width/3
-    center_y = height/2
-
-    # centro entre o centro da tela e o topo da tela
-    center_top_x = center_x
-    center_top_y = center_y/2
-
-    # centro entre o centro da tela e o fim da tela
-    center_bottom_x = center_x
-    center_bottom_y = center_y + (center_y/2)
 
     close = True
     while close:

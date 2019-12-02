@@ -31,7 +31,7 @@ pygame.display.set_caption("Jogo Final")
 
 
 while close:
-    menu(screen, width, height)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             close = False
