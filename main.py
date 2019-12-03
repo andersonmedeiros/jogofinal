@@ -1,6 +1,7 @@
 import pygame
 from menu import show_menu
 from credits import show_credits
+from game import gameplay
 
 pygame.init()
 
@@ -24,7 +25,7 @@ while close:
     if op == False:
         close = False
     elif op == 1:
-        print("PLAY")
+        gameplay(screen, width, height)
     elif op == 2:
         show_credits(screen, width, height)
 
