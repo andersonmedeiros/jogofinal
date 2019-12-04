@@ -19,14 +19,24 @@ def gerar_pergunta(qtde):
 def resposta():
     respostas = []
     for i in range(0, 4):
-        print(i)
         respostas.append(randint(0, 200))
 
     return respostas
 
 def gameplay(screen, width, height):
     clock = pygame.time.Clock()
+    pygame.mouse.set_visible(False)
     close = True
+    pygame.mixer.__init__
+    effect = pygame.mixer.Sound(
+        '/home/williams/vscode/github/jogofinal/correct.wav')
+    # effect = pygame.mixer.Sound('correct.wav')
+
+    background = pygame.mixer.Sound(
+        '/home/williams/vscode/github/jogofinal/background.wav')
+    #background = pygame.mixer.Sound('background.wav')
+
+    background.play()
 
     resposta1 = pygame.Rect(65, 60, 40, 30)
     resposta2 = pygame.Rect(215, 60, 40, 30)
@@ -93,7 +103,7 @@ def gameplay(screen, width, height):
 
         if y_resposta1 + 30 == y_paddle and x_resposta1 >= x_paddle and x_resposta1 + 40 <= x_paddle + 80:
             if respostas[0] == lists[0][2]:
-                print("Acertou 1")
+                effect.play()
                 score += 1
                 i += 1
                 resposta1.move_ip(0, -440)
@@ -108,7 +118,7 @@ def gameplay(screen, width, height):
 
         if y_resposta2 + 30 == y_paddle and x_resposta2 >= x_paddle and x_resposta2 + 40 <= x_paddle + 80:
             if respostas[1] == lists[0][2]:
-                print("Acertou 2")
+                effect.play()
                 score += 1
                 i += 1
                 resposta1.move_ip(0, -440)
@@ -123,7 +133,7 @@ def gameplay(screen, width, height):
 
         if y_resposta3 + 30 == y_paddle and x_resposta3 >= x_paddle and x_resposta3 + 40 <= x_paddle + 80:
             if respostas[2] == lists[0][2]:
-                print("Acertou 3")
+                effect.play()
                 score += 1
                 i += 1
                 resposta1.move_ip(0, -440)
@@ -138,7 +148,7 @@ def gameplay(screen, width, height):
 
         if y_resposta4 + 30 == y_paddle and x_resposta4 >= x_paddle and x_resposta4 + 40 <= x_paddle + 80:
             if respostas[3] == lists[0][2]:
-                print("Acertou 4")
+                effect.play()
                 score += 1
                 i += 1
                 resposta1.move_ip(0, -440)
@@ -155,20 +165,24 @@ def gameplay(screen, width, height):
         clock.tick(velocidade)
         pygame.display.update()
 
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    if paddle[0] > 0:
-                        paddle.move_ip(-10, 0)
-                if event.key == pygame.K_RIGHT:
-                    if paddle[0] < width - paddle[2]:
-                        paddle.move_ip(10, 0)
+        #for event in pygame.event.get():
+            #if event.type == pygame.KEYDOWN:
+                #if event.key == pygame.K_LEFT:
+                    #if paddle[0] > 0:
+                        #paddle.move_ip(-10, 0)
+                #if event.key == pygame.K_RIGHT:
+                    #if paddle[0] < width - paddle[2]:
+                        #paddle.move_ip(10, 0)
 
-        if y_resposta1 == 600:
-            resposta1.move_ip(0, -550)
-            resposta2.move_ip(0, -550)
-            resposta3.move_ip(0, -550)
-            resposta4.move_ip(0, -550)
+        x_paddle, y_paddle = pygame.mouse.get_pos()
+        paddle[0] = x_paddle
+
+
+        if y_resposta1 == 550:
+            resposta1.move_ip(0, -510)
+            resposta2.move_ip(0, -510)
+            resposta3.move_ip(0, -510)
+            resposta4.move_ip(0, -510)
             pos = randint(0, 3)
             respostas = resposta()
             lives -= 1
@@ -176,4 +190,6 @@ def gameplay(screen, width, height):
         if lives == 0:
             close = False
 
-        print(respostas)
+        if close == False:
+            background.stop()
+            pygame.mouse.set_visible(True)
