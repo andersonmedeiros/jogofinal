@@ -4,7 +4,7 @@ from random import randint
 # paddle = pygame.Rect(285, pos_y_result, 80, 30)
 pos_x = 285
 pos_y = 505
-paddle = pygame.Rect(285, 505, 80, 30)
+paddle = pygame.Rect(285, 505, 80, 61)
 0
 def gerar_pergunta(qtde):
     lists = []
@@ -41,6 +41,12 @@ def gameplay(screen, width, height):
 
     background.play()
 
+    backimage = pygame.image.load(
+        '/home/williams/vscode/github/jogofinal/backfolder.jpeg')
+
+    spriteimage = pygame.image.load(
+        '/home/williams/vscode/github/jogofinal/meteor.png')
+
     resposta1 = pygame.Rect(65, 60, 40, 30)
     resposta2 = pygame.Rect(215, 60, 40, 30)
     resposta3 = pygame.Rect(365, 60, 40, 30)
@@ -59,6 +65,7 @@ def gameplay(screen, width, height):
             if event.type == pygame.QUIT:
                 close = False
         screen.fill((255, 255, 255))
+        screen.blit(backimage, (0, 0))
 
         # placar --score
         pos_y_score = height - 50
@@ -167,15 +174,6 @@ def gameplay(screen, width, height):
         aux.text(screen, "SCORE: {}".format(score), (255, 255, 255), 25, 25, pos_y_score + 15)
         clock.tick(velocidade)
         pygame.display.update()
-
-        #for event in pygame.event.get():
-            #if event.type == pygame.KEYDOWN:
-                #if event.key == pygame.K_LEFT:
-                    #if paddle[0] > 0:
-                        #paddle.move_ip(-10, 0)
-                #if event.key == pygame.K_RIGHT:
-                    #if paddle[0] < width - paddle[2]:
-                        #paddle.move_ip(10, 0)
 
         x_paddle, y_paddle = pygame.mouse.get_pos()
         paddle[0] = x_paddle
