@@ -9,5 +9,5 @@
 <b>Developers:</b>
 
 - <b>Name:</b> Anderson de Paula Andrade Medeiros; <b>Email:</b> andersonandrade.30@gmail.com
-- <b>Name:</b> Williams Gomes; <b>Email:</b>  
-- <b>Name:</b> Lucas Ciriaco; <b>Email:</b> 
+- <b>Name:</b> Williams Gomes; <b>Email:</b> williamsdasilvagomes@gmail.com
+- <b>Name:</b> Lucas Ciriaco; <b>Email:</b> Imc.snf19@uea.edu.br
