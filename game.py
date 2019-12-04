@@ -1,11 +1,12 @@
 import pygame
 import aux
+from gameover import show_gameover
 from random import randint
 # paddle = pygame.Rect(285, pos_y_result, 80, 30)
 pos_x = 285
 pos_y = 505
-paddle = pygame.Rect(285, 505, 80, 61)
-0
+paddle = pygame.Rect(285, 505, 80, 30)
+
 def gerar_pergunta(qtde):
     lists = []
     for i in range(0, qtde):
@@ -28,24 +29,17 @@ def gameplay(screen, width, height):
     pygame.mouse.set_visible(False)
     close = True
     pygame.mixer.__init__
-    correct = pygame.mixer.Sound(
-        '/home/williams/vscode/github/jogofinal/correct.wav')
-    # correct = pygame.mixer.Sound('correct.wav')
+    correct = pygame.mixer.Sound('correct.wav')
 
-    wrong = pygame.mixer.Sound(
-        '/home/williams/vscode/github/jogofinal/wrong.wav')
+    wrong = pygame.mixer.Sound('wrong.wav')
 
-    background = pygame.mixer.Sound(
-        '/home/williams/vscode/github/jogofinal/background.wav')
-    #background = pygame.mixer.Sound('background.wav')
+    background = pygame.mixer.Sound('background.wav')
 
     background.play()
 
-    backimage = pygame.image.load(
-        '/home/williams/vscode/github/jogofinal/backfolder.jpeg')
+    backimage = pygame.image.load('backfolder.jpeg')
 
-    spriteimage = pygame.image.load(
-        '/home/williams/vscode/github/jogofinal/meteor.png')
+    spriteimage = pygame.image.load('meteor.png')
 
     resposta1 = pygame.Rect(65, 60, 40, 30)
     resposta2 = pygame.Rect(215, 60, 40, 30)
@@ -125,6 +119,11 @@ def gameplay(screen, width, height):
                 respostas = resposta()
                 if velocidade < 180:
                     velocidade += 5
+            else:
+                wrong.play()
+                op = show_gameover(screen, 600, 600, score)
+                if op == 1:
+                    gameplay(screen, width, height)
 
         if y_resposta2 + 30 == y_paddle and x_resposta2 >= x_paddle and x_resposta2 + 40 <= x_paddle + 80:
             if respostas[1] == lists[0][2]:
@@ -140,6 +139,11 @@ def gameplay(screen, width, height):
                 respostas = resposta()
                 if velocidade < 180:
                     velocidade += 5
+            else:
+                wrong.play()
+                op = show_gameover(screen, 600, 600, score)
+                if op == 1:
+                    gameplay(screen, width, height)
 
         if y_resposta3 + 30 == y_paddle and x_resposta3 >= x_paddle and x_resposta3 + 40 <= x_paddle + 80:
             if respostas[2] == lists[0][2]:
@@ -155,6 +159,11 @@ def gameplay(screen, width, height):
                 respostas = resposta()
                 if velocidade < 180:
                     velocidade += 5
+            else:
+                wrong.play()
+                op = show_gameover(screen, 600, 600, score)
+                if op == 1:
+                    gameplay(screen, width, height)
 
         if y_resposta4 + 30 == y_paddle and x_resposta4 >= x_paddle and x_resposta4 + 40 <= x_paddle + 80:
             if respostas[3] == lists[0][2]:
@@ -170,6 +179,11 @@ def gameplay(screen, width, height):
                 respostas = resposta()
                 if velocidade < 180:
                     velocidade += 5
+            else:
+                wrong.play()
+                op = show_gameover(screen, 600, 600, score)
+                if op == 1:
+                    gameplay(screen, width, height)
 
         aux.text(screen, "SCORE: {}".format(score), (255, 255, 255), 25, 25, pos_y_score + 15)
         clock.tick(velocidade)
@@ -179,8 +193,7 @@ def gameplay(screen, width, height):
         paddle[0] = x_paddle
 
 
-        if y_resposta1 == 480:
-            wrong.play()
+        if y_resposta1 == 480:            
             resposta1.move_ip(0, -440)
             resposta2.move_ip(0, -440)
             resposta3.move_ip(0, -440)
@@ -193,5 +206,5 @@ def gameplay(screen, width, height):
             close = False
 
         if close == False:
-            background.stop()
+            #background.stop()
             pygame.mouse.set_visible(True)

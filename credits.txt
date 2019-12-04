@@ -4,6 +4,12 @@ LABORATÓRIO DE PROGRAMAÇÃO DE COMPUTADORES
 PROF. DR. JUCIMAR JR
 
 Developers:
-Anderson Medeiros
-Williams Gomes
-Lucas Ciriaco
+    - Anderson Medeiros
+    - Williams Gomes
+    - Lucas Ciriaco
+Assets:
+    - som: correct.wav, wrong.wav, background.wav
+    - link: https://freesound.org/browse
+    
+    - imagem: backfolder.jpeg
+    - link: https://opengameart.org/content/space-shooter-art

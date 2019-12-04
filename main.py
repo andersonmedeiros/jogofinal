@@ -4,13 +4,13 @@ from credits import show_credits
 from game import gameplay
 
 pygame.init()
-pygame.mixer.__init__
+#pygame.mixer.__init__
 
-menusound = pygame.mixer.Sound(
-    '/home/williams/vscode/github/jogofinal/menu_sound.wav')
+#menusound = pygame.mixer.Sound(
+    #'/home/williams/vscode/github/jogofinal/menu_sound.wav')
 # menusound = pygame.mixer.Sound('menu_sound.wav')
 
-menusound.play()
+#menusound.play()
 
 
 width = 600
@@ -31,13 +31,13 @@ close = True
 while close:
     op = show_menu(screen, width, height)
     if op == False:
-        menusound.stop()
+        #menusound.stop()
         close = False
 
     elif op == 1:
-        menusound.stop()
+        #menusound.stop()
         gameplay(screen, width, height)
-        menusound.play()
+        #menusound.play()
 
     elif op == 2:
         show_credits(screen, width, height)

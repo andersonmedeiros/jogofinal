@@ -23,7 +23,7 @@ def show_menu(screen, width, height):
 
     close = True
     while close:
-        screen.fill((255, 245, 195))
+        screen.fill((255, 255, 255))
         screen.blit(text("JOGO FINAL", (0, 0, 0)),
                     [center_top_x + 10, center_top_y-40])
         screen.blit(text("PLAY", (0, 0, 0)), [center_x + 60, center_y])

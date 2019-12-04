@@ -3,7 +3,7 @@ import pygame
 
 # fonte de texto
 def text(msg, cor):
-    font = pygame.font.SysFont(None, 30)
+    font = pygame.font.SysFont(None, 25)
     text = font.render(msg, True, cor)
     return text
 
@@ -20,7 +20,7 @@ def show_credits(screen, width, height):
             if event.type == pygame.QUIT:
                 return False
 
-        screen.fill((255, 245, 195))
+        screen.fill((255, 255, 255))
         screen.blit(text("JOGO FINAL", (0, 0, 0)),
                     [240, 25])
         linha = 70
