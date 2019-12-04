@@ -28,9 +28,12 @@ def gameplay(screen, width, height):
     pygame.mouse.set_visible(False)
     close = True
     pygame.mixer.__init__
-    effect = pygame.mixer.Sound(
+    correct = pygame.mixer.Sound(
         '/home/williams/vscode/github/jogofinal/correct.wav')
-    # effect = pygame.mixer.Sound('correct.wav')
+    # correct = pygame.mixer.Sound('correct.wav')
+
+    wrong = pygame.mixer.Sound(
+        '/home/williams/vscode/github/jogofinal/wrong.wav')
 
     background = pygame.mixer.Sound(
         '/home/williams/vscode/github/jogofinal/background.wav')
@@ -103,7 +106,7 @@ def gameplay(screen, width, height):
 
         if y_resposta1 + 30 == y_paddle and x_resposta1 >= x_paddle and x_resposta1 + 40 <= x_paddle + 80:
             if respostas[0] == lists[0][2]:
-                effect.play()
+                correct.play()
                 score += 1
                 i += 1
                 resposta1.move_ip(0, -440)
@@ -118,7 +121,7 @@ def gameplay(screen, width, height):
 
         if y_resposta2 + 30 == y_paddle and x_resposta2 >= x_paddle and x_resposta2 + 40 <= x_paddle + 80:
             if respostas[1] == lists[0][2]:
-                effect.play()
+                correct.play()
                 score += 1
                 i += 1
                 resposta1.move_ip(0, -440)
@@ -133,7 +136,7 @@ def gameplay(screen, width, height):
 
         if y_resposta3 + 30 == y_paddle and x_resposta3 >= x_paddle and x_resposta3 + 40 <= x_paddle + 80:
             if respostas[2] == lists[0][2]:
-                effect.play()
+                correct.play()
                 score += 1
                 i += 1
                 resposta1.move_ip(0, -440)
@@ -148,7 +151,7 @@ def gameplay(screen, width, height):
 
         if y_resposta4 + 30 == y_paddle and x_resposta4 >= x_paddle and x_resposta4 + 40 <= x_paddle + 80:
             if respostas[3] == lists[0][2]:
-                effect.play()
+                correct.play()
                 score += 1
                 i += 1
                 resposta1.move_ip(0, -440)
@@ -178,11 +181,12 @@ def gameplay(screen, width, height):
         paddle[0] = x_paddle
 
 
-        if y_resposta1 == 550:
-            resposta1.move_ip(0, -510)
-            resposta2.move_ip(0, -510)
-            resposta3.move_ip(0, -510)
-            resposta4.move_ip(0, -510)
+        if y_resposta1 == 480:
+            wrong.play()
+            resposta1.move_ip(0, -440)
+            resposta2.move_ip(0, -440)
+            resposta3.move_ip(0, -440)
+            resposta4.move_ip(0, -440)
             pos = randint(0, 3)
             respostas = resposta()
             lives -= 1
