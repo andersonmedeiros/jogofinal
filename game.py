@@ -27,7 +27,6 @@ def resposta():
 def gameplay(screen, width, height):
     clock = pygame.time.Clock()
     close = True
-    lists = gerar_pergunta(randint(1, 20))
 
     resposta1 = pygame.Rect(65, 60, 40, 30)
     resposta2 = pygame.Rect(215, 60, 40, 30)
@@ -38,6 +37,10 @@ def gameplay(screen, width, height):
     respostas = resposta()
     pos = randint(0, 3)
     i = score = 0
+    lives = 5
+    lists = gerar_pergunta(1)
+    velocidade = 60
+
     while close:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -50,10 +53,10 @@ def gameplay(screen, width, height):
 
 
         pygame.draw.rect(screen, (0, 0, 0), [0, 0, width, 50])
-        aux.text(screen, "PERGUNTA: {} + {}".format(lists[i][0], lists[i][1]), (255, 255, 255), 25, 25, 15)
+        aux.text(screen, "PERGUNTA: {} + {}".format(lists[0][0], lists[0][1]), (255, 255, 255), 25, 25, 15)
 
 
-        respostas[pos] = lists[i][2]
+        respostas[pos] = lists[0][2]
 
         pygame.draw.rect(screen, (0, 0, 0), resposta1)
         x_resposta1 = resposta1[0]
@@ -89,31 +92,67 @@ def gameplay(screen, width, height):
         aux.text(screen, "RESULT", (255, 255, 255), 25, pos_x_result + 7, pos_y_result + 6)
 
         if y_resposta1 + 30 == y_paddle and x_resposta1 >= x_paddle and x_resposta1 + 40 <= x_paddle + 80:
-            if respostas[0] == lists[i][2]:
+            if respostas[0] == lists[0][2]:
                 print("Acertou 1")
                 score += 1
                 i += 1
+                resposta1.move_ip(0, -440)
+                resposta2.move_ip(0, -440)
+                resposta3.move_ip(0, -440)
+                resposta4.move_ip(0, -440)
+                lists = gerar_pergunta(1)
+                pos = randint(0, 3)
+                respostas = resposta()
+                if velocidade < 180:
+                    velocidade += 5
 
         if y_resposta2 + 30 == y_paddle and x_resposta2 >= x_paddle and x_resposta2 + 40 <= x_paddle + 80:
-            if respostas[1] == lists[i][2]:
+            if respostas[1] == lists[0][2]:
                 print("Acertou 2")
                 score += 1
                 i += 1
+                resposta1.move_ip(0, -440)
+                resposta2.move_ip(0, -440)
+                resposta3.move_ip(0, -440)
+                resposta4.move_ip(0, -440)
+                lists = gerar_pergunta(1)
+                pos = randint(0, 3)
+                respostas = resposta()
+                if velocidade < 180:
+                    velocidade += 5
 
         if y_resposta3 + 30 == y_paddle and x_resposta3 >= x_paddle and x_resposta3 + 40 <= x_paddle + 80:
-            if respostas[2] == lists[i][2]:
+            if respostas[2] == lists[0][2]:
                 print("Acertou 3")
                 score += 1
                 i += 1
+                resposta1.move_ip(0, -440)
+                resposta2.move_ip(0, -440)
+                resposta3.move_ip(0, -440)
+                resposta4.move_ip(0, -440)
+                lists = gerar_pergunta(1)
+                pos = randint(0, 3)
+                respostas = resposta()
+                if velocidade < 180:
+                    velocidade += 5
 
         if y_resposta4 + 30 == y_paddle and x_resposta4 >= x_paddle and x_resposta4 + 40 <= x_paddle + 80:
-            if respostas[3] == lists[i][2]:
+            if respostas[3] == lists[0][2]:
                 print("Acertou 4")
                 score += 1
                 i += 1
+                resposta1.move_ip(0, -440)
+                resposta2.move_ip(0, -440)
+                resposta3.move_ip(0, -440)
+                resposta4.move_ip(0, -440)
+                lists = gerar_pergunta(1)
+                pos = randint(0, 3)
+                respostas = resposta()
+                if velocidade < 180:
+                    velocidade += 5
 
         aux.text(screen, "SCORE: {}".format(score), (255, 255, 255), 25, 25, pos_y_score + 15)
-        clock.tick(60)
+        clock.tick(velocidade)
         pygame.display.update()
 
         for event in pygame.event.get():
@@ -131,3 +170,10 @@ def gameplay(screen, width, height):
             resposta3.move_ip(0, -550)
             resposta4.move_ip(0, -550)
             pos = randint(0, 3)
+            respostas = resposta()
+            lives -= 1
+
+        if lives == 0:
+            close = False
+
+        print(respostas)
