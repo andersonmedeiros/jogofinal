@@ -36,7 +36,7 @@ def gameplay(screen, width, height):
 
     respostas = []
     respostas = resposta()
-    pos = randint(0, 4)
+    pos = randint(0, 3)
     i = score = 0
     while close:
         for event in pygame.event.get():
@@ -124,3 +124,10 @@ def gameplay(screen, width, height):
                 if event.key == pygame.K_RIGHT:
                     if paddle[0] < width - paddle[2]:
                         paddle.move_ip(10, 0)
+
+        if y_resposta1 == 600:
+            resposta1.move_ip(0, -550)
+            resposta2.move_ip(0, -550)
+            resposta3.move_ip(0, -550)
+            resposta4.move_ip(0, -550)
+            pos = randint(0, 3)
