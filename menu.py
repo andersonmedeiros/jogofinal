@@ -9,6 +9,7 @@ def text(msg, cor):
 
 
 def show_menu(screen, width, height):
+    backimage = pygame.image.load('backfolder.jpeg')
     # centro da tela
     center_x = width/3
     center_y = height/2
@@ -24,6 +25,7 @@ def show_menu(screen, width, height):
     close = True
     while close:
         screen.fill((255, 255, 255))
+        screen.blit(backimage, (0, 0))
         screen.blit(text("JOGO FINAL", (0, 0, 0)),
                     [center_top_x + 10, center_top_y-40])
         screen.blit(text("PLAY", (0, 0, 0)), [center_x + 60, center_y])

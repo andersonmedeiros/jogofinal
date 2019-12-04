@@ -9,6 +9,7 @@ def text(msg, cor):
 
 
 def show_credits(screen, width, height):
+    backimage = pygame.image.load('backfolder.jpeg')
     txt_credits = open("credits.txt", "r")
     list_credits = []
     for credit in txt_credits:
@@ -21,6 +22,7 @@ def show_credits(screen, width, height):
                 return False
 
         screen.fill((255, 255, 255))
+        screen.blit(backimage, (0, 0))
         screen.blit(text("JOGO FINAL", (0, 0, 0)),
                     [240, 25])
         linha = 70

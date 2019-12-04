@@ -4,11 +4,13 @@ import aux
 
 def show_gameover(screen, width, height, acertos):
     pygame.mouse.set_visible(True)
+    backimage = pygame.image.load('backfolder.jpeg')
     close = True
     while close:
         
 
         screen.fill((255, 255, 255))
+        screen.blit(backimage, (0, 0))
         aux.text(screen, "GAME OVER!", (255,0,0), 40, 240, 90)
         if acertos == 1:
             aux.text(screen, "VOCÊ ACERTOU: {} PERGUNTA".format(acertos), (0,0,0), 40, 70, 200)
